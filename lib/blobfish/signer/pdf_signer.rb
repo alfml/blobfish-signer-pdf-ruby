@@ -6,7 +6,7 @@ module Blobfish
     class PdfSigner
 
       def self.verify (signed_file, trusted_anchors: [])
-        pdf = PDF.read signed_file, {verbosity: Origami::Parser::VERBOSE_QUIET}
+        pdf = Origami::PDF.read signed_file, {verbosity: Origami::Parser::VERBOSE_QUIET}
         validation_results = []
         # Based on Origami::PDF#signature. TODO patch origami to support multiple signatures validation.
         pdf.each_field do |field|
